@@ -91,3 +91,18 @@ it('should not allow invalid memo', function ($memo) {
     '',
 ])
 ->throws(InvalidArgumentException::class);
+
+it('encodes the memo', function () {
+    $builder = new URLBuilder();
+
+    $memo = <<<'EOT'
+This is a memo with newlines
+
+and special characters like äöüß
+
+It should be encoded correctly.
+EOT;
+
+    expect($builder->generateTransfer('recipient', ['memo' => $memo]))
+        ->toBe('https://app.arkvault.io/#/?method=transfer&recipient=recipient&coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&memo=This+is+a+memo+with+newlines%0A%0Aand+special+characters+like+%C3%A4%C3%B6%C3%BC%C3%9F%0A%0AIt+should+be+encoded+correctly.');
+});
