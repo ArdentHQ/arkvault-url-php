@@ -18,45 +18,49 @@ class UrlBuilder
         $this->nethash = Networks::ARKMainnet->nethash();
     }
 
-    public function coin(): string {
-		return $this->coin;
-	}
+    public function coin(): string
+    {
+        return $this->coin;
+    }
 
-	public function setCoin(string $coin): self {
-		$this->coin = $coin;
+    public function setCoin(string $coin): self
+    {
+        $this->coin = $coin;
 
         return $this;
-	}
+    }
 
-	public function nethash(): string {
-		return $this->nethash;
-	}
-
-	public function setNethashFromPreset(Networks $network):self
+    public function nethash(): string
     {
-		$this->nethash = $network->nethash();
+        return $this->nethash;
+    }
 
-		return $this;
-	}
-
-	public function setNethash(string $nethash): self
+    public function setNethashFromPreset(Networks $network):self
     {
-		$this->nethash = $nethash;
+        $this->nethash = $network->nethash();
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function generateTransfer(string $recipient, array $options = []) {
+    public function setNethash(string $nethash): self
+    {
+        $this->nethash = $nethash;
+
+        return $this;
+    }
+
+    public function generateTransfer(string $recipient, array $options = []): string
+    {
         $options = [
-            'method' => Methods::Transfer->method(),
+            'method'    => Methods::Transfer->method(),
             'recipient' => $recipient,
-            'coin' => $this->coin,
-            'nethash' => $this->nethash,
-            ...array_filter($options)
+            'coin'      => $this->coin,
+            'nethash'   => $this->nethash,
+            ...array_filter($options),
         ];
 
         $queryString = http_build_query($options);
 
         return sprintf('%s?%s', $this->baseUrl, $queryString);
-	}
+    }
 }

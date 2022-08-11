@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ardenthq\UrlBuilder\Enums;
 
 enum Methods
@@ -8,9 +10,8 @@ enum Methods
 
     public function method(): string
     {
-        return match($this) 
-        {
-            Methods::Transfer => 'transfer',   
+        return match ($this) {
+            Methods::Transfer => 'transfer',
         };
     }
 }

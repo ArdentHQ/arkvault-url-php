@@ -1,15 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1660233429">
-  <project timestamp="1660233429">
-    <file name="/Users/alfonso/Projects/ark/arkvault-url-php/src/Example.php">
-      <class name="Ardenthq\UrlBuilder\Example" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+<coverage generated="1660239281">
+  <project timestamp="1660239281">
+    <file name="/Users/alfonso/Projects/ark/arkvault-url-php/src/Enums/Methods.php">
+      <class name="Ardenthq\UrlBuilder\Enums\Methods" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </class>
-      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="13" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="15" type="stmt" count="1"/>
-      <metrics loc="18" ncloc="18" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+      <line num="11" type="method" name="method" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="13" type="stmt" count="6"/>
+      <line num="14" type="stmt" count="6"/>
+      <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
     </file>
-    <metrics files="1" loc="18" ncloc="18" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+    <file name="/Users/alfonso/Projects/ark/arkvault-url-php/src/Enums/Networks.php">
+      <class name="Ardenthq\UrlBuilder\Enums\Networks" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </class>
+      <line num="13" type="method" name="nethash" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="15" type="stmt" count="9"/>
+      <line num="16" type="stmt" count="9"/>
+      <line num="17" type="stmt" count="9"/>
+      <metrics loc="21" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+    </file>
+    <file name="/Users/alfonso/Projects/ark/arkvault-url-php/src/UrlBuilder.php">
+      <class name="Ardenthq\UrlBuilder\UrlBuilder" namespace="global">
+        <metrics complexity="7" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="24" coveredelements="24"/>
+      </class>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="18" type="stmt" count="9"/>
+      <line num="21" type="method" name="coin" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="26" type="method" name="setCoin" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="28" type="stmt" count="3"/>
+      <line num="30" type="stmt" count="3"/>
+      <line num="33" type="method" name="nethash" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="35" type="stmt" count="2"/>
+      <line num="38" type="method" name="setNethashFromPreset" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="45" type="method" name="setNethash" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="47" type="stmt" count="3"/>
+      <line num="49" type="stmt" count="3"/>
+      <line num="52" type="method" name="generateTransfer" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="54" type="stmt" count="6"/>
+      <line num="55" type="stmt" count="6"/>
+      <line num="57" type="stmt" count="6"/>
+      <line num="58" type="stmt" count="6"/>
+      <line num="59" type="stmt" count="6"/>
+      <line num="62" type="stmt" count="6"/>
+      <line num="64" type="stmt" count="6"/>
+      <metrics loc="67" ncloc="67" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="24" coveredelements="24"/>
+    </file>
+    <metrics files="3" loc="106" ncloc="106" classes="3" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="31" coveredelements="31"/>
   </project>
 </coverage>

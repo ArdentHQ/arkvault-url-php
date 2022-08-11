@@ -41,17 +41,9 @@
   "scripts": {
     "analyse": "vendor/bin/phpstan analyse",
     "refactor": "vendor/bin/rector process",
-    "format": [
-      "./vendor/bin/php-cs-fixer fix"
-    ],
-    "test": [
-      "./vendor/bin/pest"
-    ],
-    "test:fast": [
-      "./vendor/bin/pest --parallel"
-    ],
-    "test:coverage": [
-      "./vendor/bin/pest --coverage --min=100 --coverage-html=.coverage --coverage-clover=coverage.xml"
-    ]
+    "format": "./vendor/bin/php-cs-fixer fix",
+    "test": "./vendor/bin/pest",
+    "test:fast": "./vendor/bin/pest --parallel",
+    "test:coverage": "./vendor/bin/pest --coverage --min=100 --coverage-html=.coverage --coverage-clover=coverage.xml"
   }
 }
