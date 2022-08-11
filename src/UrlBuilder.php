@@ -6,6 +6,7 @@ namespace Ardenthq\UrlBuilder;
 
 use Ardenthq\UrlBuilder\Enums\Methods;
 use Ardenthq\UrlBuilder\Enums\Networks;
+use InvalidArgumentException;
 
 class UrlBuilder
 {
@@ -51,6 +52,8 @@ class UrlBuilder
 
     public function generateTransfer(string $recipient, array $options = []): string
     {
+        $this->validateOptions($options);
+
         $options = [
             'method'    => Methods::Transfer->method(),
             'recipient' => $recipient,
@@ -62,5 +65,28 @@ class UrlBuilder
         $queryString = http_build_query($options);
 
         return sprintf('%s?%s', $this->baseUrl, $queryString);
+    }
+
+    private function validateOptions(array $options)
+    {
+        if (array_key_exists('amount', $options)) {
+            if (! is_numeric($options['amount'])) {
+                throw new InvalidArgumentException('Amount must be a number');
+            }
+
+            if (floatval($options['amount']) <= 0) {
+                throw new InvalidArgumentException('Amount must be a positive number');
+            }
+        }
+
+        if (array_key_exists('memo', $options)) {
+            if (! is_string($options['memo'])) {
+                throw new InvalidArgumentException('Memo must be a string');
+            }
+
+            if ($options['memo'] === '') {
+                throw new InvalidArgumentException('Memo must not be empty');
+            }
+        }
     }
 }

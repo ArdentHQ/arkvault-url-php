@@ -71,12 +71,29 @@ it('should generate transfer url', function () {
         ->toBe('https://app.arkvault.io/#/?method=transfer&recipient=recipient&coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988');
 });
 
-it('should not include amount & memo options if they are falsy', function () {
+it('should not allow invalid amounts', function ($amount) {
     $builder = new URLBuilder();
 
-    expect($builder->generateTransfer('recipient', ['amount' => null, 'memo' => null]))
+    expect($builder->generateTransfer('recipient', ['amount' => $amount]))
         ->toBe('https://app.arkvault.io/#/?method=transfer&recipient=recipient&coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988');
+})
+->with([
+    null,
+    0,
+    '1_4',
+    '-1',
+])
+->throws(InvalidArgumentException::class);
 
-    expect($builder->generateTransfer('recipient', ['amount' => '', 'memo' => '']))
+it('should not allow invalid memo', function ($memo) {
+    $builder = new URLBuilder();
+
+    expect($builder->generateTransfer('recipient', ['memo' => $memo]))
         ->toBe('https://app.arkvault.io/#/?method=transfer&recipient=recipient&coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988');
-});
+})
+->with([
+    null,
+    0,
+    '',
+])
+->throws(InvalidArgumentException::class);
