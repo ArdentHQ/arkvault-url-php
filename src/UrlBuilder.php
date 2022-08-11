@@ -55,6 +55,27 @@ class UrlBuilder
             ...array_filter($options),
         ];
 
+        return $this->generateUrl($options);
+    }
+
+    public function generateVote(string $subject): string
+    {
+        $options = [
+            'method'    => Methods::Vote->name(),
+            'nethash'   => $this->nethash,
+        ];
+
+        if (strlen($subject) === 66) {
+            $options['publickey'] = $subject;
+        } else {
+            $options['delegate'] = $subject;
+        }
+
+        return $this->generateUrl($options);
+    }
+
+    private function generateUrl(array $options): string
+    {
         $queryString = http_build_query($options);
 
         return sprintf('%s?%s', $this->baseUrl, $queryString);
