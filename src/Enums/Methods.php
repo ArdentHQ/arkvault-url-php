@@ -8,7 +8,7 @@ enum Methods
 {
     case Transfer;
 
-    public function method(): string
+    public function name(): string
     {
         return match ($this) {
             Methods::Transfer => 'transfer',

@@ -48,7 +48,7 @@ class UrlBuilder
         $this->validateOptions($options);
 
         $options = [
-            'method'    => Methods::Transfer->method(),
+            'method'    => Methods::Transfer->name(),
             'recipient' => $recipient,
             'coin'      => $this->coin,
             'nethash'   => $this->nethash,
