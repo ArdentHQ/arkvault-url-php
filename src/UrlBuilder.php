@@ -62,6 +62,7 @@ class UrlBuilder
     {
         $options = [
             'method'    => Methods::Vote->name(),
+            'coin'      => $this->coin,
             'nethash'   => $this->nethash,
         ];
 
