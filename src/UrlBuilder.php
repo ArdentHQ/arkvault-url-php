@@ -36,16 +36,9 @@ class UrlBuilder
         return $this->nethash;
     }
 
-    public function setNetwork(Networks $network):self
+    public function setNetwork(Networks | string $network):self
     {
-        $this->nethash = $network->nethash();
-
-        return $this;
-    }
-
-    public function setNethash(string $nethash): self
-    {
-        $this->nethash = $nethash;
+        $this->nethash = $network instanceof Networks ? $network->nethash() : $network;
 
         return $this;
     }

@@ -8,17 +8,11 @@ use Ardenthq\UrlBuilder\UrlBuilder;
 it('should use default base url', function () {
     $builder = new UrlBuilder();
 
-    $builder->setCoin('coin');
-    $builder->setNethash('nethash');
-
     expect($builder->generateTransfer('recipient'))->toStartWith('https://app.arkvault.io/#/');
 });
 
 it('should use given base url', function () {
     $builder = new URLBuilder('baseUrl');
-
-    $builder->setCoin('coin');
-    $builder->setNethash('nethash');
 
     expect($builder->generateTransfer('recipient'))->toStartWith('baseUrl');
 });
@@ -31,15 +25,15 @@ it('should set coin', function () {
     expect($builder->coin())->toBe('coin');
 });
 
-it('should set nethash', function () {
+it('should set network with nethash', function () {
     $builder = new URLBuilder();
 
-    $builder->setNethash('nethash');
+    $builder->setNetwork('nethash');
 
     expect($builder->nethash())->toBe('nethash');
 });
 
-it('should set network', function () {
+it('should set network with enum', function () {
     $builder = new URLBuilder();
 
     $builder->setNetwork(Networks::ARKDevnet);
