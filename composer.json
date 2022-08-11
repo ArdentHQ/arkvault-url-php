@@ -1,0 +1,49 @@
+{
+  "name": "ardenthq/arkvault-url-php",
+  "description": "Deeplink URL generator for ARK based networks",
+  "type": "library",
+  "require": {
+    "php": "^8.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Ardenthq\\UrlBuilder\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Alfonso",
+      "email": "alfonso@ark.io"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "pestphp/pest": "^1.21"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "format": [
+      "vendor/bin/php-cs-fixer fix"
+    ],
+    "test": [
+      "./vendor/bin/pest"
+    ],
+    "test:fast": [
+      "./vendor/bin/pest --parallel"
+    ],
+    "test:coverage": [
+      "./vendor/bin/pest --coverage --min=100 --coverage-html=.coverage --coverage-clover=coverage.xml"
+    ]
+  }
+}
