@@ -66,7 +66,7 @@ class UrlBuilder
         ];
 
         if (strlen($subject) === 66) {
-            $options['publickey'] = $subject;
+            $options['publicKey'] = $subject;
         } else {
             $options['delegate'] = $subject;
         }

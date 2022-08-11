@@ -116,7 +116,7 @@ it('should generate a vote url from delegate', function () {
 it('should generate a vote url from delegate public key', function () {
     $builder = new UrlBuilder();
 
-    expect($builder->generateVote('0296893488d335ff818391da7c450cfeb7821a4eb535b15b95808ea733915fbfb1'))->toBe('https://app.arkvault.io/#/?method=vote&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&publickey=0296893488d335ff818391da7c450cfeb7821a4eb535b15b95808ea733915fbfb1');
+    expect($builder->generateVote('0296893488d335ff818391da7c450cfeb7821a4eb535b15b95808ea733915fbfb1'))->toBe('https://app.arkvault.io/#/?method=vote&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&publicKey=0296893488d335ff818391da7c450cfeb7821a4eb535b15b95808ea733915fbfb1');
 });
 
 it('should generate a vote url on a different network', function () {
