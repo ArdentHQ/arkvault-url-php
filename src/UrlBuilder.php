@@ -35,7 +35,7 @@ class UrlBuilder
         return $this->nethash;
     }
 
-    public function setNethashFromPreset(Networks $network):self
+    public function setNetwork(Networks $network):self
     {
         $this->nethash = $network->nethash();
 

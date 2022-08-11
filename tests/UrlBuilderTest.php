@@ -39,12 +39,15 @@ it('should set nethash', function () {
     expect($builder->nethash())->toBe('nethash');
 });
 
-it('should set nethash from preset', function () {
+it('should set network', function () {
     $builder = new URLBuilder();
 
-    $builder->setNethashFromPreset(Networks::ARKMainnet);
+    $builder->setNetwork(Networks::ARKDevnet);
 
-    expect($builder->nethash())->toBe(Networks::ARKMainnet->nethash());
+    expect($builder->nethash())->toBe(Networks::ARKDevnet->nethash());
+
+    expect($builder->generateTransfer('recipient'))
+        ->toBe('https://app.arkvault.io/#/?method=transfer&recipient=recipient&coin=ARK&nethash=2a44f340d76ffc3df204c5f38cd355b7496c9065a1ade2ef92071436bd72e867');
 });
 
 it('should generate transfer url with memo', function () {
