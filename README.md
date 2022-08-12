@@ -60,8 +60,6 @@ new URLBuilder("https://your-url.com"); // Defaults to app.arkvault.io
 
 ## Development
 
-[pnpm](https://pnpm.js.org/en/) is required to be installed before starting. It is used to manage this repo.
-
 ### Analyze the code with `phpstan`
 
 ```bash
