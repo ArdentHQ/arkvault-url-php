@@ -1,5 +1,5 @@
 {
-    "name": "ardenthq/arkvault-url-php",
+    "name": "ardenthq/arkvault-url",
     "description": "Deeplink URL generator for ARK based networks",
     "type": "library",
     "license": "MIT",
