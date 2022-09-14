@@ -133,12 +133,8 @@ it("should generate sign message url", function () {
 	expect($builder->generateMessageSign('test', ['address' => 'address']))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=sign&message=test&address=address');
 });
 
-// it("should require message when generating sign message url", function () {
-// 	const builder = new URLBuilder("baseUrl");
+it("should require message when generating sign message url", function () {
+	$builder = new UrlBuilder();
 
-// 	assert.throws(() => builder.generateMessageSign(""), "message is required");
-// 	//@ts-ignore
-// 	assert.throws(() => builder.generateMessageSign(), "message is required");
-// 	//@ts-ignore
-// 	assert.throws(() => builder.generateMessageSign(undefined), "message is required");
-// });
+	$builder->generateMessageSign('');
+})->throws(InvalidArgumentException::class);
