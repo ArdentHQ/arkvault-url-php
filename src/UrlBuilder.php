@@ -86,18 +86,21 @@ class UrlBuilder
 		return $this->generateUrl($options);
 	}
 
-	// public function generateMessageVerify({ message, signatory, signature }: SignedMessage) {
-	// 	if (!message || !signatory || !signature) {
-	// 		throw new Error("signed message is invalid");
-	// 	}
+	public function generateMessageVerify(string $message, string $signatory, string $signature)
+	{
+		if (!$message || !$signatory || !$signature) {
+			throw new InvalidArgumentException("Signed message is invalid");
+		}
 
-	// 	return this.#generate({
-	// 		message,
-	// 		method: Methods.Verify,
-	// 		signatory,
-	// 		signature,
-	// 	});
-	// }
+		$options = [
+            'method'    => Methods::Verify->name(),
+            'message' 	=> $message,
+            'signatory' => $signatory,
+            'signature' => $signature,
+        ];
+
+		return $this->generateUrl($options);
+	}
 
     private function generateUrl(array $options): string
     {
