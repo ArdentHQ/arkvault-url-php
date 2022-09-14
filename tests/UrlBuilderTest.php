@@ -127,54 +127,54 @@ it('should generate a vote url on a different network', function () {
     expect($builder->generateVote('benchdark'))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=2a44f340d76ffc3df204c5f38cd355b7496c9065a1ade2ef92071436bd72e867&method=vote&delegate=benchdark');
 });
 
-it("should generate sign message url", function () {
-	$builder = new UrlBuilder();
+it('should generate sign message url', function () {
+    $builder = new UrlBuilder();
 
-	expect($builder->generateMessageSign('test', ['address' => 'address']))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=sign&message=test&address=address');
+    expect($builder->generateMessageSign('test', ['address' => 'address']))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=sign&message=test&address=address');
 });
 
-it("should require message when generating sign message url", function () {
-	$builder = new UrlBuilder();
+it('should require message when generating sign message url', function () {
+    $builder = new UrlBuilder();
 
-	$builder->generateMessageSign('');
+    $builder->generateMessageSign('');
 })->throws(InvalidArgumentException::class);
 
-it("should generate verify message url", function () {
-	$builder = new UrlBuilder();
+it('should generate verify message url', function () {
+    $builder = new UrlBuilder();
 
-	expect($builder->generateMessageVerify(
-		message: 'hello world',
-		signatory: '025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca',
-		signature: '22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d'
-	))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
+    expect($builder->generateMessageVerify(
+        message: 'hello world',
+        signatory: '025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca',
+        signature: '22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d'
+    ))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
 });
 
-it("should require message of signed message when generating verify message url", function () {
-	$builder = new UrlBuilder();
+it('should require message of signed message when generating verify message url', function () {
+    $builder = new UrlBuilder();
 
-	expect($builder->generateMessageVerify(
-		message: '',
-		signatory: '025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca',
-		signature: '22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d'
-	))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
+    expect($builder->generateMessageVerify(
+        message: '',
+        signatory: '025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca',
+        signature: '22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d'
+    ))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
 })->throws(InvalidArgumentException::class);
 
-it("should require signatory of signed message when generating verify message url", function () {
-	$builder = new UrlBuilder();
+it('should require signatory of signed message when generating verify message url', function () {
+    $builder = new UrlBuilder();
 
-	expect($builder->generateMessageVerify(
-		message: 'hello world',
-		signatory: '',
-		signature: '22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d'
-	))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
+    expect($builder->generateMessageVerify(
+        message: 'hello world',
+        signatory: '',
+        signature: '22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d'
+    ))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
 })->throws(InvalidArgumentException::class);
 
-it("should require signature of signed message when generating verify message url", function () {
-	$builder = new UrlBuilder();
+it('should require signature of signed message when generating verify message url', function () {
+    $builder = new UrlBuilder();
 
-	expect($builder->generateMessageVerify(
-		message: 'hello world',
-		signatory: '025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca',
-		signature: ''
-	))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
+    expect($builder->generateMessageVerify(
+        message: 'hello world',
+        signatory: '025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca',
+        signature: ''
+    ))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d');
 })->throws(InvalidArgumentException::class);

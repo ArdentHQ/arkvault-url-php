@@ -71,44 +71,44 @@ class UrlBuilder
         return $this->generateUrl($options);
     }
 
-	public function generateMessageSign(string $message, array $options = []): string
-	{
-		if (!$message) {
-			throw new InvalidArgumentException("Message is required");
-		}
+    public function generateMessageSign(string $message, array $options = []): string
+    {
+        if (! $message) {
+            throw new InvalidArgumentException('Message is required');
+        }
 
-		$options = [
+        $options = [
             'method'    => Methods::Sign->name(),
-            'message' => $message,
+            'message'   => $message,
             ...array_filter($options),
         ];
 
-		return $this->generateUrl($options);
-	}
+        return $this->generateUrl($options);
+    }
 
-	public function generateMessageVerify(string $message, string $signatory, string $signature)
-	{
-		if (!$message || !$signatory || !$signature) {
-			throw new InvalidArgumentException("Signed message is invalid");
-		}
+    public function generateMessageVerify(string $message, string $signatory, string $signature)
+    {
+        if (! $message || ! $signatory || ! $signature) {
+            throw new InvalidArgumentException('Signed message is invalid');
+        }
 
-		$options = [
+        $options = [
             'method'    => Methods::Verify->name(),
-            'message' 	=> $message,
+            'message' 	 => $message,
             'signatory' => $signatory,
             'signature' => $signature,
         ];
 
-		return $this->generateUrl($options);
-	}
+        return $this->generateUrl($options);
+    }
 
     private function generateUrl(array $options): string
     {
-		$options = [
-			'coin' => $this->coin,
-			'nethash' => $this->nethash,
-			...$options,
-		];
+        $options = [
+            'coin'    => $this->coin,
+            'nethash' => $this->nethash,
+            ...$options,
+        ];
 
         $queryString = http_build_query($options);
 

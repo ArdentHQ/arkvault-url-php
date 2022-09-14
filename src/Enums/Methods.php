@@ -10,9 +10,9 @@ enum Methods
 
     case Vote;
 
-	case Sign;
+    case Sign;
 
-	case Verify;
+    case Verify;
 
     public function name(): string
     {
