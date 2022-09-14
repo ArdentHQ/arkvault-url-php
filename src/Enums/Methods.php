@@ -10,11 +10,14 @@ enum Methods
 
     case Vote;
 
+	case Sign;
+
     public function name(): string
     {
         return match ($this) {
             Methods::Transfer => 'transfer',
             Methods::Vote     => 'vote',
+            Methods::Sign     => 'sign',
         };
     }
 }
