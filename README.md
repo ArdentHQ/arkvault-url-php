@@ -37,8 +37,15 @@ $transferUrl = $builder->generateTransfer('DM7UiH4b2rW2Nv11Wu6ToiZi8MJhGCEWhP', 
 $voteUrl = $builder->generateVote('benchdark');
 // > https://app.arkvault.io/#/?method=vote&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&delegate=benchdark
 
-$voteUrl = $builder->generateVote('0296893488d335ff818391da7c450cfeb7821a4eb535b15b95808ea733915fbfb1');
-// > https://app.arkvault.io/#/?method=vote&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&publicKey=0296893488d335ff818391da7c450cfeb7821a4eb535b15b95808ea733915fbfb1
+$signUrl = $builder->generateMessageSign('message', ['address' => 'address']);
+// > https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=sign&message=test&address=address
+
+$verifyUrl = $builder->generateMessageVerify(
+	message: 'hello world',
+	signatory: '025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca',
+	signature: '22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d'
+);
+// > https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=verify&message=hello+world&signatory=025f81956d5826bad7d30daed2b5c8c98e72046c1ec8323da336445476183fb7ca&signature=22f8ef55e8120fbf51e2407c808a1cc98d7ef961646226a3d3fad606437f8ba49ab68dc33c6d4a478f954c72e9bac2b4a4fe48baa70121a311a875dba1527d9d
 ```
 
 For further customizations, you can use the following methods
