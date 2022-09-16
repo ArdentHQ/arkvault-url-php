@@ -50,8 +50,6 @@ class UrlBuilder
         $options = [
             'method'    => Methods::Transfer->name(),
             'recipient' => $recipient,
-            'coin'      => $this->coin,
-            'nethash'   => $this->nethash,
             ...array_filter($options),
         ];
 
@@ -61,9 +59,7 @@ class UrlBuilder
     public function generateVote(string $subject): string
     {
         $options = [
-            'method'    => Methods::Vote->name(),
-            'coin'      => $this->coin,
-            'nethash'   => $this->nethash,
+            'method' => Methods::Vote->name(),
         ];
 
         if (strlen($subject) === 66) {
@@ -75,8 +71,45 @@ class UrlBuilder
         return $this->generateUrl($options);
     }
 
+    public function generateMessageSign(string $message, array $options = []): string
+    {
+        if (! $message) {
+            throw new InvalidArgumentException('Message is required');
+        }
+
+        $options = [
+            'method'    => Methods::Sign->name(),
+            'message'   => $message,
+            ...array_filter($options),
+        ];
+
+        return $this->generateUrl($options);
+    }
+
+    public function generateMessageVerify(string $message, string $signatory, string $signature)
+    {
+        if (! $message || ! $signatory || ! $signature) {
+            throw new InvalidArgumentException('Signed message is invalid');
+        }
+
+        $options = [
+            'method'    => Methods::Verify->name(),
+            'message' 	 => $message,
+            'signatory' => $signatory,
+            'signature' => $signature,
+        ];
+
+        return $this->generateUrl($options);
+    }
+
     private function generateUrl(array $options): string
     {
+        $options = [
+            'coin'    => $this->coin,
+            'nethash' => $this->nethash,
+            ...$options,
+        ];
+
         $queryString = http_build_query($options);
 
         return sprintf('%s?%s', $this->baseUrl, $queryString);
