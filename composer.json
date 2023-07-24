@@ -13,8 +13,8 @@
         "php": "^8.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.21",
-        "pestphp/pest": "^1.8",
+        "friendsofphp/php-cs-fixer": "^3.22",
+        "pestphp/pest": "^1.9",
         "phpstan/phpstan": "^1.10",
         "rector/rector": "^0.17"
     },
