@@ -13,7 +13,7 @@ enum Methods
     case Sign;
 
     case Verify;
-    
+
     case Username;
 
     public function name(): string

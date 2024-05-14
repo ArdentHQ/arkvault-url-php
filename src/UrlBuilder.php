@@ -109,7 +109,7 @@ class UrlBuilder
         }
 
         $options = [
-            'method'    => Methods::Username->name(),
+            'method'     => Methods::Username->name(),
             'username' 	 => $username,
         ];
 
