@@ -56,17 +56,12 @@ class UrlBuilder
         return $this->generateUrl($options);
     }
 
-    public function generateVote(string $subject): string
+    public function generateVote(string $validatorPublicKey): string
     {
         $options = [
             'method' => Methods::Vote->name(),
+            'validator' => $validatorPublicKey,
         ];
-
-        if (strlen($subject) === 66) {
-            $options['publicKey'] = $subject;
-        } else {
-            $options['delegate'] = $subject;
-        }
 
         return $this->generateUrl($options);
     }
