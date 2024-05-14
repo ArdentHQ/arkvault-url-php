@@ -12,13 +12,13 @@ it('should use default base url', function () {
 });
 
 it('should use given base url', function () {
-    $builder = new URLBuilder('baseUrl');
+    $builder = new UrlBuilder('baseUrl');
 
     expect($builder->generateTransfer('recipient'))->toStartWith('baseUrl');
 });
 
 it('should set coin', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     $builder->setCoin('coin');
 
@@ -26,7 +26,7 @@ it('should set coin', function () {
 });
 
 it('should set network with nethash', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     $builder->setNetwork('nethash');
 
@@ -34,7 +34,7 @@ it('should set network with nethash', function () {
 });
 
 it('should set network with enum', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     $builder->setNetwork(Networks::ARKDevnet);
 
@@ -45,28 +45,28 @@ it('should set network with enum', function () {
 });
 
 it('should generate transfer url with memo', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     expect($builder->generateTransfer('recipient', ['memo' => 'memo']))
         ->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=transfer&recipient=recipient&memo=memo');
 });
 
 it('should generate transfer url with amount', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     expect($builder->generateTransfer('recipient', ['amount' => 1000]))
         ->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=transfer&recipient=recipient&amount=1000');
 });
 
 it('should generate transfer url', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     expect($builder->generateTransfer('recipient'))
         ->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=transfer&recipient=recipient');
 });
 
 it('should not allow invalid amounts', function ($amount) {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     expect($builder->generateTransfer('recipient', ['amount' => $amount]))
         ->toBe('https://app.arkvault.io/#/?method=transfer&recipient=recipient&coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988');
@@ -80,7 +80,7 @@ it('should not allow invalid amounts', function ($amount) {
 ->throws(InvalidArgumentException::class);
 
 it('should not allow invalid memo', function ($memo) {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     expect($builder->generateTransfer('recipient', ['memo' => $memo]))
         ->toBe('https://app.arkvault.io/#/?method=transfer&recipient=recipient&coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988');
@@ -93,7 +93,7 @@ it('should not allow invalid memo', function ($memo) {
 ->throws(InvalidArgumentException::class);
 
 it('encodes the memo', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     $memo = <<<'EOT'
 This is a memo with newlines
