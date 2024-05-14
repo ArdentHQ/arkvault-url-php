@@ -13,6 +13,8 @@ enum Methods
     case Sign;
 
     case Verify;
+    
+    case Username;
 
     public function name(): string
     {
@@ -21,6 +23,7 @@ enum Methods
             Methods::Vote     => 'vote',
             Methods::Sign     => 'sign',
             Methods::Verify   => 'verify',
+            Methods::Username => 'username',
         };
     }
 }
