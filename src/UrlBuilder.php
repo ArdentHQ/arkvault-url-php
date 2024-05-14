@@ -59,7 +59,7 @@ class UrlBuilder
     public function generateVote(string $validatorPublicKey): string
     {
         $options = [
-            'method' => Methods::Vote->name(),
+            'method'    => Methods::Vote->name(),
             'validator' => $validatorPublicKey,
         ];
 
