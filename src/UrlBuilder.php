@@ -102,6 +102,20 @@ class UrlBuilder
         return $this->generateUrl($options);
     }
 
+    public function generateUsername(string $username)
+    {
+        if (! $username) {
+            throw new InvalidArgumentException('Username is required');
+        }
+
+        $options = [
+            'method'     => Methods::Username->name(),
+            'username' 	 => $username,
+        ];
+
+        return $this->generateUrl($options);
+    }
+
     private function generateUrl(array $options): string
     {
         $options = [

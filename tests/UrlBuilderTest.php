@@ -65,6 +65,13 @@ it('should generate transfer url', function () {
         ->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=transfer&recipient=recipient');
 });
 
+it('should generate username url', function () {
+    $builder = new URLBuilder();
+
+    expect($builder->generateUsername('alfy'))
+        ->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=username&username=alfy');
+});
+
 it('should not allow invalid amounts', function ($amount) {
     $builder = new URLBuilder();
 
