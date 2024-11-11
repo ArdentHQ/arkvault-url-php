@@ -1,49 +1,49 @@
 {
-	"name": "ardenthq/arkvault-url",
-	"description": "Deeplink URL generator for ARK based networks",
-	"type": "library",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Alfonso",
-			"email": "alfonso@ardenthq.com"
-		}
-	],
-	"require": {
-		"php": "^8.0"
-	},
-	"require-dev": {
-		"friendsofphp/php-cs-fixer": "^3.56",
-		"pestphp/pest": "^2.34",
-		"phpstan/phpstan": "^1.11",
-		"rector/rector": "^1.0"
-	},
-	"config": {
-		"optimize-autoloader": true,
-		"preferred-install": "dist",
-		"sort-packages": true,
-		"allow-plugins": {
-			"pestphp/pest-plugin": true
-		}
-	},
-	"autoload": {
-		"psr-4": {
-			"Ardenthq\\UrlBuilder\\": "src/"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Tests\\": "tests/"
-		}
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"scripts": {
-		"analyse": "vendor/bin/phpstan analyse",
-		"refactor": "vendor/bin/rector process",
-		"format": "./vendor/bin/php-cs-fixer fix",
-		"test": "./vendor/bin/pest",
-		"test:fast": "./vendor/bin/pest --parallel",
-		"test:coverage": "./vendor/bin/pest --coverage --min=100 --coverage-html=.coverage --coverage-clover=coverage.xml"
-	}
+    "name": "ardenthq/arkvault-url",
+    "description": "Deeplink URL generator for ARK based networks",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alfonso",
+            "email": "alfonso@ardenthq.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "pestphp/pest": "^2.5",
+        "phpstan/phpstan": "^1.12",
+        "rector/rector": "^1.2"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ardenthq\\UrlBuilder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "refactor": "vendor/bin/rector process",
+        "format": "./vendor/bin/php-cs-fixer fix",
+        "test": "./vendor/bin/pest",
+        "test:fast": "./vendor/bin/pest --parallel",
+        "test:coverage": "./vendor/bin/pest --coverage --min=100 --coverage-html=.coverage --coverage-clover=coverage.xml"
+    }
 }
