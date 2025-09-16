@@ -117,7 +117,7 @@ EOT;
 it('should generate a vote url from validator public key', function () {
     $builder = new UrlBuilder();
 
-    expect($builder->generateVote(validatorPublicKey: '03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4'))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=vote&validator=03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4');
+    expect($builder->generateVote(validatorPublicKey: '03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4'))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=vote&publicKey=03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4');
 });
 
 it('should generate a vote url with username', function () {
@@ -126,7 +126,7 @@ it('should generate a vote url with username', function () {
     expect($builder->generateVote(
         validatorPublicKey: '03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4',
         username: 'alfy'
-    ))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=vote&validator=03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4&username=alfy');
+    ))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=vote&publicKey=03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4&username=alfy');
 });
 
 it('should generate a vote url on a different network', function () {
@@ -134,7 +134,7 @@ it('should generate a vote url on a different network', function () {
 
     $builder->setNetwork(Networks::ARKDevnet);
 
-    expect($builder->generateVote(validatorPublicKey: '03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4'))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=2a44f340d76ffc3df204c5f38cd355b7496c9065a1ade2ef92071436bd72e867&method=vote&validator=03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4');
+    expect($builder->generateVote(validatorPublicKey: '03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4'))->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=2a44f340d76ffc3df204c5f38cd355b7496c9065a1ade2ef92071436bd72e867&method=vote&publicKey=03a461f557c88612328c8e6d69991eaa7916359dfd2c6a65fd988b672a8bb780c4');
 });
 
 it('should generate sign message url', function () {
