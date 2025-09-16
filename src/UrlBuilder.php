@@ -60,7 +60,7 @@ class UrlBuilder
     {
         $options = [
             'method'    => Methods::Vote->name(),
-            'validator' => $validatorPublicKey,
+            'publicKey' => $validatorPublicKey,
         ];
 
         if ($username) {
