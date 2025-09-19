@@ -64,7 +64,7 @@ class UrlBuilder
         ];
 
         if ($username) {
-            $options['username'] = $username;
+            $options['delegate'] = $username;
         }
 
         return $this->generateUrl($options);
