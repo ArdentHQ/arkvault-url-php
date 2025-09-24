@@ -14,6 +14,8 @@ enum Methods
 
     case Verify;
 
+    case Username;
+
     public function name(): string
     {
         return match ($this) {
@@ -21,6 +23,7 @@ enum Methods
             Methods::Vote     => 'vote',
             Methods::Sign     => 'sign',
             Methods::Verify   => 'verify',
+            Methods::Username => 'username',
         };
     }
 }

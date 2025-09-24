@@ -56,16 +56,15 @@ class UrlBuilder
         return $this->generateUrl($options);
     }
 
-    public function generateVote(string $subject): string
+    public function generateVote(string $validatorPublicKey, ?string $username = null): string
     {
         $options = [
-            'method' => Methods::Vote->name(),
+            'method'    => Methods::Vote->name(),
+            'publicKey' => $validatorPublicKey,
         ];
 
-        if (strlen($subject) === 66) {
-            $options['publicKey'] = $subject;
-        } else {
-            $options['delegate'] = $subject;
+        if ($username) {
+            $options['delegate'] = $username;
         }
 
         return $this->generateUrl($options);
@@ -97,6 +96,20 @@ class UrlBuilder
             'message' 	 => $message,
             'signatory' => $signatory,
             'signature' => $signature,
+        ];
+
+        return $this->generateUrl($options);
+    }
+
+    public function generateUsername(string $username)
+    {
+        if (! $username) {
+            throw new InvalidArgumentException('Username is required');
+        }
+
+        $options = [
+            'method'     => Methods::Username->name(),
+            'username' 	 => $username,
         ];
 
         return $this->generateUrl($options);
