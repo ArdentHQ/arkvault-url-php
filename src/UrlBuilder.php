@@ -85,7 +85,7 @@ class UrlBuilder
         return $this->generateUrl($options);
     }
 
-    public function generateMessageVerify(string $message, string $signatory, string $signature)
+    public function generateMessageVerify(string $message, string $signatory, string $signature): string
     {
         if (! $message || ! $signatory || ! $signature) {
             throw new InvalidArgumentException('Signed message is invalid');
@@ -101,7 +101,7 @@ class UrlBuilder
         return $this->generateUrl($options);
     }
 
-    public function generateUsername(string $username)
+    public function generateUsername(string $username): string
     {
         if (! $username) {
             throw new InvalidArgumentException('Username is required');
@@ -128,7 +128,7 @@ class UrlBuilder
         return sprintf('%s?%s', $this->baseUrl, $queryString);
     }
 
-    private function validateOptions(array $options)
+    private function validateOptions(array $options): void
     {
         if (array_key_exists('amount', $options)) {
             if (! is_numeric($options['amount'])) {

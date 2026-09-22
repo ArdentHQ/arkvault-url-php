@@ -66,7 +66,7 @@ it('should generate transfer url', function () {
 });
 
 it('should generate username url', function () {
-    $builder = new URLBuilder();
+    $builder = new UrlBuilder();
 
     expect($builder->generateUsername('alfy'))
         ->toBe('https://app.arkvault.io/#/?coin=ARK&nethash=6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988&method=username&username=alfy');
